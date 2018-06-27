@@ -1,11 +1,11 @@
 # Simple Revision Cleaner
 * Contributors: danzhik
-* Donate link: http://example.com/
+* Donate link: 
 * Tags: revisions,cleaning
 * Requires at least: 3.0.1
 * Tested up to: 4.9.6
 * Requires PHP: 7.2.0
-* Stable tag: 0.1
+* Stable tag: 1.0
 * License: GNU 3.0
 * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  
@@ -36,12 +36,13 @@ No, the plugin only checks the date of revision and if it was created earlier th
 The main idea is quite same. The only difference is that with use of Network Settings you can spread the time limit of revision storing over all sites in network, restricting possibility to change it from site settings.
  
 ## Screenshots 
- 
-### Settings page in single site (General Settings page)
-![Settings Page](/assets/screenshot-1) 
 
 ### Settings page in network administration
-![Settings Page Network](/assets/screenshot-2)
+![Settings Page Network](/assets/screenshot-2.png)
+ 
+### Settings page in single site (General Settings page)
+![Settings Page](/assets/screenshot-1.png) 
+
  
 ## Changelog 
  
