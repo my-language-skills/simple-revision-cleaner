@@ -13,8 +13,7 @@ This plugin provides simple handy tool for automatic cleaning database from old,
  
 ## Description 
  
- 
-    With use of this plugin you will not longer need to care about clean state of your database because of plenty of revisions. Once the plugin is activated, every time you visit admin dashboard of a site it will automatically detect reveions, which are older then you need, and flush them from database.
+With use of this plugin you will not longer need to care about clean state of your database because of plenty of revisions. Once the plugin is activated, every time you visit admin dashboard of a site it will automatically detect reveions, which are older then you need, and flush them from database.
  
 ## Installation 
  
