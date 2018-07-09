@@ -6,7 +6,7 @@ about: Notes and sugestions to help us to improve
 
 <!-- Before opening a new issue, please search for duplicate issues to prevent opening a duplicate feature request. If there is already an open existing request, please leave a comment there. -->
 
-* [ ] I've read and understood the [contribution guidelines](https://github.com/my-language-skills/simple-revision-cleaner/blob/master/.github/CONTRIBUTING.md).
+* [ ] I've read and understood the [contribution guidelines](https://github.com/my-language-skills/all-in-one-metadata/blob/master/.github/CONTRIBUTING.md).
 * [ ] I've searched for any related issues and avoided creating a duplicate issue.
 
 ### Please give us a description of what happened.
@@ -26,14 +26,13 @@ about: Notes and sugestions to help us to improve
 
 
 ### Screenshots
-If applicable, add screenshots to help explain your problem.
+<!-- If applicable, add screenshots to help explain your problem. -->
 
 ### Additional context
-Add any other context about the problem here.
+<!-- Add any other context about the problem here. -->
 
 ### Technical info
-* WordPress version:
-* Simple Revision Cleaner version:
-* Relevant plugins in case of a bug:
-<!-- Please make sure you can reproduce this bug with a default theme such as Twenty Seventeen. Sometimes issues may occur due to theme conflicts. -->
-* Tested with theme:
+* Simple Revision Cleaner version: [  ] <!-- Enter Simple Revision Cleaner version here -->
+* WordPress version: [  ] <!-- Enter WordPress version here -->
+* Relevant plugins in case of a bug:      <!-- Please make sure you can reproduce this bug with no plugins activated. Sometimes issues may occur due to plugin conflicts. -->
+* Tested with theme:      <!-- Please make sure you can reproduce this bug with a default theme such as Twenty Seventeen. Sometimes issues may occur due to theme conflicts. -->
