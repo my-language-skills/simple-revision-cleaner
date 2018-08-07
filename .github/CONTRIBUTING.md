@@ -1,5 +1,4 @@
 # Contribution Guidelines
-<img src="https://blog.datacite.org/images/2016/12/schema-org.png" alt="Schema-org logo" width="275px">
 
 Before filing a bug report or a feature request, be sure to read the contribution guidelines.
 
