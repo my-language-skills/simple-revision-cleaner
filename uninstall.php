@@ -32,7 +32,7 @@ foreach( $blogs_ids as $b ) {
 	//extract plugin options from all options
 	foreach ( $all_options as $name => $value ) {
 
-		if ( stristr( $name, 'fr_net_' ) || stristr( $name, 'fr_freeze_' ) || stristr( $name, 'fr_time_' )) {
+		if ( stristr( $name, 'src_net_' ) || stristr( $name, 'src_freeze_' ) || stristr( $name, 'src_time_' )) {
 
 			$plugin_options[ $name ] = $value;
 		}

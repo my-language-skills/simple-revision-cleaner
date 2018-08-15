@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 0.1
  * @author Daniil Zhitnitskii @danzhik
  */
-function flush_revisions (){
+function src_flush_revisions (){
 	global $wpdb;
 	$limit = 1000;
 
@@ -30,7 +30,7 @@ function flush_revisions (){
 	$date_format = get_option( 'date_format' );
 
 	//getting option responsible for time limit of deletion
-	$timeLimit = get_option('fr_time_limit');
+	$timeLimit = get_option('src_time_limit');
 	//if not defined time limit for deleting, skip
 	if (isset($timeLimit)) {
 		$start = time();
@@ -53,24 +53,24 @@ function flush_revisions (){
  * @since 0.1
  * @author Daniil Zhitnitskii @danzhik
  */
-function sett_section(){
+function src_sett_section(){
 
 	//adding section to main options page
-	add_settings_section('fr_settings', 'Revisions Flush', '', 'general');
+	add_settings_section('src_settings', 'Revisions Flush', '', 'general');
 
 	//registering setting for interval value
-	register_setting('general', 'fr_time_limit');
+	register_setting('general', 'src_time_limit');
 
 	//callback function for setting field
 	$create_field = function () {
-		$disabled = get_blog_option(1,'fr_freeze_limit') ? 'readonly' : '';
-		$value = get_option('fr_time_limit');
-		$html = '<input type="number" id="fr_time_limit" name="fr_time_limit" '.$disabled.' value="'.$value.'">';
+		$disabled = get_blog_option(1,'src_freeze_limit') ? 'readonly' : '';
+		$value = get_option('src_time_limit');
+		$html = '<input type="number" id="src_time_limit" name="src_time_limit" '.$disabled.' value="'.$value.'">';
 		$html .= '<p><i>Interval in days since today to store revisions. ';
 		$html .= $disabled == 'readonly' ? 'Set by network administrator. In order to change value, please, contact him.</i></p>' : '</i></p>';
 		echo $html;
 	};
-	add_settings_field('fr_time_limit', 'Time interval', $create_field, 'general', 'fr_settings');
+	add_settings_field('src_time_limit', 'Time interval', $create_field, 'general', 'src_settings');
 }
 
 /**
@@ -79,13 +79,13 @@ function sett_section(){
  * @since 0.1
  * @author Daniil Zhitnitskii
  */
-function render_net_set(){
+function src_render_net_set(){
 	?>
 	<div class="wrap">
 		<form method="POST" action="edit.php?action=update_network_options_flush">
 			<?php
-			settings_fields('fr_net_settings');
-			do_settings_sections('fr_net_settings');
+			settings_fields('src_net_settings');
+			do_settings_sections('src_net_settings');
 			submit_button();
 			?>
 		</form>
@@ -99,46 +99,46 @@ function render_net_set(){
  * @since 0.1
  * @author Daniil Zhitnitskii @danzhik
  */
-function net_sett_section(){
+function src_net_sett_section(){
 
-	add_submenu_page('settings.php', 'Flushing Revisions', 'Flush Revisions', 'manage_network_options', 'fr_net_settings' ,'render_net_set');
+	add_submenu_page('settings.php', 'Flushing Revisions', 'Flush Revisions', 'manage_network_options', 'src_net_settings' ,'src_render_net_set');
 
 	//adding section to main options page
-	add_settings_section('fr_net_settings', 'Revisions Flush', '', 'fr_net_settings');
+	add_settings_section('src_net_settings', 'Revisions Flush', '', 'src_net_settings');
 
 	//registering setting for freezing value over all sites in multisite
-	register_setting('fr_net_settings', 'fr_freeze_limit');
+	register_setting('src_net_settings', 'src_freeze_limit');
 	//registering setting for interval value
-	register_setting('fr_net_settings', 'fr_net_time_limit');
+	register_setting('src_net_settings', 'src_net_time_limit');
 
 	//callback function for setting field
 	$create_field = function () {
-		$value = get_option('fr_net_time_limit');
-		$html = '<input type="number" id="fr_net_time_limit" required name="fr_net_time_limit" value="'.$value.'">';
+		$value = get_option('src_net_time_limit');
+		$html = '<input type="number" id="src_net_time_limit" required name="src_net_time_limit" value="'.$value.'">';
 		$html .= '<p><i>Interval in days since today to store revisions.</i></p>';
 		echo $html;
 	};
 
 	//callback function for freezing setting field
 	$create_freeze_field = function () {
-		$checked = get_option('fr_freeze_limit') ? 'checked' : '';
-		$html = '<input type="checkbox" id="fr_freeze_limit" name="fr_freeze_limit" '.$checked.' value="1">';
+		$checked = get_option('src_freeze_limit') ? 'checked' : '';
+		$html = '<input type="checkbox" id="src_freeze_limit" name="src_freeze_limit" '.$checked.' value="1">';
 		$html .= '<p><i>If selected, the interval value over all sites will be equal to one above.</i></p>';
 		echo $html;
 	};
 
-	add_settings_field('fr_net_time_limit', 'Time interval', $create_field, 'fr_net_settings', 'fr_net_settings');
-	add_settings_field('fr_freeze_limit', 'Set for all sites', $create_freeze_field, 'fr_net_settings', 'fr_net_settings');
+	add_settings_field('src_net_time_limit', 'Time interval', $create_field, 'src_net_settings', 'src_net_settings');
+	add_settings_field('src_freeze_limit', 'Set for all sites', $create_freeze_field, 'src_net_settings', 'src_net_settings');
 }
 
 /**
  * Function responsible for option overwriting over all sites
  */
-function update_flush_options (){
+function src_update_flush_options (){
 
 	global $wpdb;
 
-	check_admin_referer('fr_net_settings-options');
+	check_admin_referer('src_net_settings-options');
 
 	//Grabbing all the site IDs
 	$siteids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
@@ -149,18 +149,18 @@ function update_flush_options (){
 		//Switching site
 		switch_to_blog($site_id);
 		if ($site_id == 1){
-			update_option( 'fr_net_time_limit', $_POST['fr_net_time_limit'] );
-			update_option('fr_freeze_limit', $_POST['fr_freeze_limit']);
+			update_option( 'src_net_time_limit', $_POST['src_net_time_limit'] );
+			update_option('src_freeze_limit', $_POST['src_freeze_limit']);
 			continue;
 		}
-		if (isset($_POST['fr_freeze_limit'])) {
-			update_option( 'fr_time_limit', $_POST['fr_net_time_limit'] );
+		if (isset($_POST['src_freeze_limit'])) {
+			update_option( 'src_time_limit', $_POST['src_net_time_limit'] );
 			flush_revisions();
 		}
 	}
 
 	// At the end we redirect back to our options page.
-	wp_redirect(add_query_arg(array('page' => 'fr_net_settings',
+	wp_redirect(add_query_arg(array('page' => 'src_net_settings',
 	                                'updated' => 'true'), network_admin_url('settings.php')));
 
 	exit;
@@ -172,7 +172,7 @@ function update_flush_options (){
  * @since 0.1
  * @author Daniil Zhitnitskii @danzhik
  */
-function activator() {
+function src_activator() {
 
 	global $wpdb;
 
@@ -183,22 +183,22 @@ function activator() {
 	foreach ( $siteids as $site_id ) {
 		switch_to_blog($site_id);
 		if ($site_id == 1){
-			update_option( 'fr_net_time_limit', '180' );
+			update_option( 'src_net_time_limit', '180' );
 			continue;
 		}
-		update_option( 'fr_time_limit', '180' );
+		update_option( 'src_time_limit', '180' );
 	}
 }
 
 //executing flush on admin area visiting
-add_action('admin_init', 'flush_revisions');
+add_action('admin_init', 'src_flush_revisions');
 //adding settings section on main settings page
-add_action('admin_menu', 'sett_section');
+add_action('admin_menu', 'src_sett_section');
 //activation process
-register_activation_hook(__FILE__, 'activator');
+register_activation_hook(__FILE__, 'src_activator');
 
 //add network page if is multisite installation and handle option updates
 if (is_multisite()){
-	add_action('network_admin_menu', 'net_sett_section');
-	add_action('network_admin_edit_update_network_options_flush', 'update_flush_options');
+	add_action('network_admin_menu', 'src_net_sett_section');
+	add_action('network_admin_edit_update_network_options_flush', 'src_update_flush_options');
 }
