@@ -1,14 +1,29 @@
 <?php
 
-/*
-Plugin Name: Simple Revision Cleaner
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
-Description: The plugin aim is to provide possibility for automatic deletion of old revisions on WordPress site or multisite.
-Version: 1.0
-Author: Daniil Zhitnitskii (My Language Skills)
-Author URI: http://URI_Of_The_Plugin_Author
-License: GPL 3.0
-*/
+/**
+ * The plugin bootstrap file
+ *
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
+ *
+ * @link              https://github.com/my-language-skills/simple-revision-cleaner
+ * @since             1.0
+ * @package           simple-revision-cleaner
+ *
+ * @wordpress-plugin
+ * Plugin Name:       Simple Revision Cleaner
+ * Plugin URI:        https://github.com/my-language-skills/simple-revision-cleaner
+ * Description: The plugin aim is to provide possibility for automatic deletion of old revisions on WordPress site or multisite.
+ * Version:           1.0.0
+ * Author:            My Language Skills team
+ * Author URI:        https://github.com/my-language-skills/
+ * License:           GPL 3.0
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * Text Domain:       simple-revision-cleaner
+ * Domain Path:       /languages
+ */
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
