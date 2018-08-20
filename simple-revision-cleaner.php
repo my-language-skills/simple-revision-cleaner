@@ -80,7 +80,7 @@ function src_sett_section(){
 	$create_field = function () {
 		$disabled = get_blog_option(1,'src_freeze_limit') ? 'readonly' : '';
 		$value = get_option('src_time_limit');
-		$html = '<input type="number" id="src_time_limit" name="src_time_limit" '.$disabled.' value="'.$value.'">';
+		$html = '<input type="number" id="src_time_limit" name="src_time_limit" '.$disabled.' value="'.esc_html($value).'">';
 		$html .= '<p><i>Interval in days since today to store revisions. ';
 		$html .= $disabled == 'readonly' ? 'Set by network administrator. In order to change value, please, contact him.</i></p>' : '</i></p>';
 		echo $html;
@@ -129,7 +129,7 @@ function src_net_sett_section(){
 	//callback function for setting field
 	$create_field = function () {
 		$value = get_option('src_net_time_limit');
-		$html = '<input type="number" id="src_net_time_limit" required name="src_net_time_limit" value="'.$value.'">';
+		$html = '<input type="number" id="src_net_time_limit" required name="src_net_time_limit" value="'.esc_html($value).'">';
 		$html .= '<p><i>Interval in days since today to store revisions.</i></p>';
 		echo $html;
 	};
@@ -164,13 +164,13 @@ function src_update_flush_options (){
 		//Switching site
 		switch_to_blog($site_id);
 		if ($site_id == 1){
-			update_option( 'src_net_time_limit', $_POST['src_net_time_limit'] );
-			update_option('src_freeze_limit', $_POST['src_freeze_limit']);
+			update_option( 'src_net_time_limit', sanitize_text_field($_POST['src_net_time_limit']) );
+			update_option('src_freeze_limit', sanitize_key($_POST['src_freeze_limit']));
 			continue;
 		}
 		if (isset($_POST['src_freeze_limit'])) {
-			update_option( 'src_time_limit', $_POST['src_net_time_limit'] );
-			flush_revisions();
+			update_option( 'src_time_limit', sanitize_text_field($_POST['src_net_time_limit']) );
+			src_flush_revisions();
 		}
 	}
 
