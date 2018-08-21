@@ -17,7 +17,6 @@ With use of this plugin you will not longer need to care about clean state of yo
 
 https://github.com/my-language-skills/simple-revision-cleaner
 
-
 == Installation ==
 
 1. Upload plugin folder to /wp-content/plugins/ folder in your web-site file-system.
