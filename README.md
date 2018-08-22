@@ -1,6 +1,6 @@
 # Simple Revision Cleaner
 
-* Contributors: danzhik
+* Contributors: danzhik, colomet
 * Donate link: 
 * Tags: revisions,cleaning
 * Requires at least: 3.0.1
