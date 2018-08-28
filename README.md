@@ -54,7 +54,7 @@ The main idea is quite same. The only difference is that with use of Network Set
 * Changed:
   * Names of settings pages
   * Name in sidebar menu
-  * Default options values (interval from 180 days to 365 days)
+  * Default options values (interval increased from 180 days to 365 days)
   * Defualt WordPress notifications are used in admin now
  
  

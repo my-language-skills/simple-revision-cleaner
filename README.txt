@@ -44,7 +44,7 @@ No, the plugin only checks the date of revision and if it was created earlier th
 Changed:
 - Names of settings pages
 - Name in sidebar menu
-- Default options values (interval from 180 days to 365 days)
+- Default options values (interval increased from 180 days to 365 days)
 - Defualt WordPress notifications are used in admin now
 
 = 1.0 =
