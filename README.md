@@ -38,10 +38,10 @@ The main idea is quite same. The only difference is that with use of Network Set
 ## Screenshots 
 
 ### Settings page in network administration
-![Settings Page Network](/wp-assets/screenshot-2.png)
+![Settings Page Network](/wp-assets/screenshot-1.png)
  
 ### Settings page in single site (General Settings page)
-![Settings Page](/wp-assets/screenshot-1.png) 
+![Settings Page](/wp-assets/screenshot-2.png) 
 
 ### Settings page in single site when option is locked by network administrator (General Settings page)
 ![Settings Page](/wp-assets/screenshot-3.png) 
