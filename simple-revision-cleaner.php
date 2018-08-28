@@ -138,7 +138,7 @@ function src_net_sett_section(){
 	$create_freeze_field = function () {
 		$checked = get_option('src_freeze_limit') ? 'checked' : '';
 		$html = '<input type="checkbox" id="src_freeze_limit" name="src_freeze_limit" '.$checked.' value="1">';
-		$html .= '<p><i>If selected, the interval value over all sites will be equal to one above.</i></p>';
+		$html .= '<p><i>If checked, the interval over all blogs will be equal to the one above.</i></p>';
 		echo $html;
 	};
 
