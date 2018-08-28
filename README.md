@@ -45,7 +45,18 @@ The main idea is quite same. The only difference is that with use of Network Set
 
  
 ## Changelog 
- 
 
+### 1.0.1  
+
+* Changed:
+  * Names of settings pages
+  * Name in sidebar menu
+  * Default options values (interval from 180 days to 365 days)
+  * Defualt WordPress notifications are used in admin now
+ 
  
 ## Upgrade Notice 
+
+### 1.0.1 
+
+* Increased default interval of storing revisions to 365 days, default WordPress notifications are used now.

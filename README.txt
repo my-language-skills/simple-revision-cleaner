@@ -39,12 +39,21 @@ No, the plugin only checks the date of revision and if it was created earlier th
 
 == Changelog ==
 
+= 1.0.1 = 
+Changed:
+- Names of settings pages
+- Name in sidebar menu
+- Default options values (interval from 180 days to 365 days)
+- Defualt WordPress notifications are used in admin now
+
 = 1.0 =
  First release
 
 
 == Upgrade Notice ==
 
+= 1.0.1 =
+Increased default interval of storing revisions to 365 days, default WordPress notifications are used now.
 
 == Disclaimers ==
 
