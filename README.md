@@ -25,7 +25,7 @@ With use of this plugin you will not longer need to care about clean state of yo
  
 ### How am I notified if some revisions were deleted from datatabase? 
 
-Once some revisions are deeleted, you will get an alert when admin dashboard will be loaded.
+Once some revisions are deleted, you will get an alert when admin dashboard will be loaded.
 
 ### Is plugin work influenced if I set the limitation on amount of revesions on my web-site? 
  

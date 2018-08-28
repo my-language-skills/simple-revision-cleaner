@@ -26,7 +26,7 @@ https://github.com/my-language-skills/simple-revision-cleaner
 
 = How am I notified if some revisions were deleted from database? =
 
-Once some revisions are deleted, you will get an alert when admin dashboard will be loaded.
+Once some revisions are deleted, you will get notification when admin dashboard will be loaded.
 
 = Is plugin work influenced if I set the limitation on amount of revisions on my web-site? =
 
