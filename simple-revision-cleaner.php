@@ -198,10 +198,10 @@ function src_activator() {
 	foreach ( $siteids as $site_id ) {
 		switch_to_blog($site_id);
 		if ($site_id == 1){
-			update_option( 'src_net_time_limit', '180' );
+			update_option( 'src_net_time_limit', '365' );
 			continue;
 		}
-		update_option( 'src_time_limit', '180' );
+		update_option( 'src_time_limit', '365' );
 	}
 }
 
