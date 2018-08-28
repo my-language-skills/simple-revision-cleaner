@@ -55,7 +55,8 @@ function src_flush_revisions (){
 			wp_delete_post_revision( $revision_id );
 		}
 		if (!empty($revision_ids)) {
-			echo '<script type="text/javascript">alert("' . esc_html( date( $time_format . ' ' . $date_format ) ) . ': ' . count( $revision_ids ) . ' revisions deleted. Took ' . esc_html( time() - $start ) . 's.");</script>';
+			echo '<div class="notice notice-success is-dismissible"> 
+					<p><strong>'.esc_html( date( $time_format . ' ' . $date_format ) ) . ': ' . count( $revision_ids ) . ' revisions deleted. Took ' .esc_html( time() - $start ) .'s</strong></p></div>';
 		}
 	}
 
