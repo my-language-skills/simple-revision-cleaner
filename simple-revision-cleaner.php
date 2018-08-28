@@ -50,14 +50,12 @@ function src_flush_revisions (){
 	if (isset($timeLimit)) {
 		$start = time();
 		// We keep only 1 week worth of post revisions.
-		$revision_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE (post_type = 'revision') AND post_date_gmt < DATE_SUB(NOW(), INTERVAL '.$timeLimit.' DAY) LIMIT %d", $limit ) );
+		$revision_ids = $wpdb->get_col($wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE (`post_type` = 'revision') AND `post_date_gmt` < DATE_SUB(NOW(), INTERVAL '$timeLimit' DAY) LIMIT %d", $limit ));
+		$revision_ids_amount = 0;
 		foreach ( $revision_ids as $revision_id ) {
 			wp_delete_post_revision( $revision_id );
 		}
-		if (!empty($revision_ids)) {
-			echo '<div class="notice notice-success is-dismissible"> 
-					<p><strong>'.esc_html( date( $time_format . ' ' . $date_format ) ) . ': ' . count( $revision_ids ) . ' revisions deleted. Took ' .esc_html( time() - $start ) .'s</strong></p></div>';
-		}
+
 	}
 
 }
