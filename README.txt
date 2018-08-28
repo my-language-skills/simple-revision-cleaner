@@ -34,8 +34,9 @@ No, the plugin only checks the date of revision and if it was created earlier th
 
 == Screenshots ==
 
-1. Settings page in single site (General Settings page).
-2. Settings page in network administration
+1. Settings page in network administration
+2. Settings page in single site (General Settings page).
+3. Settings page in single site when option is locked by network administrator (General Settings page)
 
 == Changelog ==
 
