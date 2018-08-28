@@ -6,8 +6,8 @@
 * Requires at least: 3.0.1
 * Tested up to: 4.9.6
 * Requires PHP: 7.2.0
-* Stable tag: 1.0
-* License: GNU 3.0
+* Stable tag: 1.0.1
+* License: GPL 3.0
 * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  
 This plugin provides simple handy tool for automatic cleaning database from old, non-relevant revesions on your web-site.
@@ -55,8 +55,3 @@ The main idea is quite same. The only difference is that with use of Network Set
   * Defualt WordPress notifications are used in admin now
  
  
-## Upgrade Notice 
-
-### 1.0.1 
-
-* Increased default interval of storing revisions to 365 days, default WordPress notifications are used now.
