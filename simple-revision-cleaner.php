@@ -16,7 +16,7 @@
  * Plugin Name:       Simple Revision Cleaner
  * Plugin URI:        https://github.com/my-language-skills/simple-revision-cleaner
  * Description:       The plugin aim is to provide possibility for automatic deletion of old revisions on WordPress site or multisite.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            My Language Skills team
  * Author URI:        https://github.com/my-language-skills/
  * License:           GPL 3.0
@@ -72,7 +72,7 @@ function src_flush_revisions (){
 function src_sett_section(){
 
 	//adding section to main options page
-	add_settings_section('src_settings', 'Revisions Flush', '', 'general');
+	add_settings_section('src_settings', 'Revisions Cleaner', '', 'general');
 
 	//registering setting for interval value
 	register_setting('general', 'src_time_limit');
@@ -117,10 +117,10 @@ function src_render_net_set(){
  */
 function src_net_sett_section(){
 
-	add_submenu_page('settings.php', 'Flushing Revisions', 'Flush Revisions', 'manage_network_options', 'src_net_settings' ,'src_render_net_set');
+	add_submenu_page('settings.php', 'Revisions Cleaner', 'Revisions Cleaner', 'manage_network_options', 'src_net_settings' ,'src_render_net_set');
 
 	//adding section to main options page
-	add_settings_section('src_net_settings', 'Revisions Flush', '', 'src_net_settings');
+	add_settings_section('src_net_settings', 'Revisions Cleaner', '', 'src_net_settings');
 
 	//registering setting for freezing value over all sites in multisite
 	register_setting('src_net_settings', 'src_freeze_limit');
