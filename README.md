@@ -49,6 +49,12 @@ The main idea is quite same. The only difference is that with use of Network Set
  
 ## Changelog 
 
+### 1.1.0 
+* Changed:
+  * Notification system removed
+* Enhancements:
+  * Fixed bug when all the revisions were deleted
+
 ### 1.0.1  
 
 * Changed:

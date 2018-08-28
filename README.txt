@@ -40,6 +40,12 @@ No, the plugin only checks the date of revision and if it was created earlier th
 
 == Changelog ==
 
+= 1.1.0 =
+Changed:
+- Notification system removed
+Enhancements:
+- Fixed bug when all the revisions were deleted
+
 = 1.0.1 = 
 Changed:
 - Names of settings pages
@@ -52,6 +58,9 @@ Changed:
 
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Fixed bug, which leaded to deleting of all the revisions 
 
 = 1.0.1 =
 Increased default interval of storing revisions to 365 days, default WordPress notifications are used now.
