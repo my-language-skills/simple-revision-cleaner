@@ -21,6 +21,7 @@
  * Author URI:        https://github.com/my-language-skills/
  * License:           GPL 3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * Network:						true
  * Text Domain:       simple-revision-cleaner
  * Domain Path:       /languages
  */
@@ -37,6 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 0.1
  * @author Daniil Zhitnitskii @danzhik
  */
+
 function src_flush_revisions (){
 	global $wpdb;
 	$limit = 1000;
@@ -70,7 +72,7 @@ function src_flush_revisions (){
 function src_sett_section(){
 
 	//adding section to main options page
-	add_settings_section('src_settings', 'Revisions Cleaner', '', 'general');
+	add_settings_section('src_settings', __('Revisions Cleaner', 'simple-revision-cleaner'), '', 'general');
 
 	//registering setting for interval value
 	register_setting('general', 'src_time_limit');
@@ -80,11 +82,11 @@ function src_sett_section(){
 		$disabled = get_blog_option(1,'src_freeze_limit') ? 'readonly' : '';
 		$value = get_option('src_time_limit');
 		$html = '<input type="number" id="src_time_limit" name="src_time_limit" '.$disabled.' value="'.esc_html($value).'">';
-		$html .= '<p><i>Interval in days since today to store revisions. ';
-		$html .= $disabled == 'readonly' ? 'Set by network administrator. In order to change value, please, contact him.</i></p>' : '</i></p>';
+		$html .= '<p><i>' . __('Interval in days since today to store revisions.', 'simple-revision-cleaner');
+		$html .= $disabled == 'readonly' ? __(' Set by network administrator. In order to change value, please, contact him.', 'simple-revision-cleaner') . '</i></p>' : '</i></p>';
 		echo $html;
 	};
-	add_settings_field('src_time_limit', 'Time interval', $create_field, 'general', 'src_settings');
+	add_settings_field('src_time_limit', __('Time interval', 'simple-revision-cleaner'), $create_field, 'general', 'src_settings');
 }
 
 /**
@@ -115,10 +117,13 @@ function src_render_net_set(){
  */
 function src_net_sett_section(){
 
-	add_submenu_page('settings.php', 'Revisions Cleaner', 'Revisions Cleaner', 'manage_network_options', 'src_net_settings' ,'src_render_net_set');
+	add_submenu_page('settings.php', __('Revisions Cleaner', 'simple-revision-cleaner'),
+								__('Revisions Cleaner', 'simple-revision-cleaner'),
+								'manage_network_options', 'src_net_settings' ,'src_render_net_set');
 
 	//adding section to main options page
-	add_settings_section('src_net_settings', 'Revisions Cleaner', '', 'src_net_settings');
+	add_settings_section('src_net_settings', __('Revisions Cleaner', 'simple-revision-cleaner'),
+	 											'', 'src_net_settings');
 
 	//registering setting for freezing value over all sites in multisite
 	register_setting('src_net_settings', 'src_freeze_limit');
@@ -129,7 +134,7 @@ function src_net_sett_section(){
 	$create_field = function () {
 		$value = get_option('src_net_time_limit');
 		$html = '<input type="number" id="src_net_time_limit" required name="src_net_time_limit" value="'.esc_html($value).'">';
-		$html .= '<p><i>Interval in days since today to store revisions.</i></p>';
+		$html .= '<p><i>' .  __('Interval in days since today to store revisions.', 'simple-revision-cleaner') . '</i></p>';
 		echo $html;
 	};
 
@@ -137,12 +142,12 @@ function src_net_sett_section(){
 	$create_freeze_field = function () {
 		$checked = get_option('src_freeze_limit') ? 'checked' : '';
 		$html = '<input type="checkbox" id="src_freeze_limit" name="src_freeze_limit" '.$checked.' value="1">';
-		$html .= '<p><i>If checked, the interval over all blogs will be equal to the one above.</i></p>';
+		$html .= '<p><i>' . __('If checked, the interval over all blogs will be equal to the one above.', 'simple-revision-cleaner') . '</i></p>';
 		echo $html;
 	};
 
-	add_settings_field('src_net_time_limit', 'Time interval', $create_field, 'src_net_settings', 'src_net_settings');
-	add_settings_field('src_freeze_limit', 'Set for all sites', $create_freeze_field, 'src_net_settings', 'src_net_settings');
+	add_settings_field('src_net_time_limit', __('Time interval', 'simple-revision-cleaner') , $create_field, 'src_net_settings', 'src_net_settings');
+	add_settings_field('src_freeze_limit', __('Set for all sites', 'simple-revision-cleaner'), $create_freeze_field, 'src_net_settings', 'src_net_settings');
 }
 
 /**
@@ -216,3 +221,21 @@ if (is_multisite()){
 	add_action('network_admin_menu', 'src_net_sett_section');
 	add_action('network_admin_edit_update_network_options_flush', 'src_update_flush_options');
 }
+
+/**
+ * Internalization
+ * It loads the MO file for plugin's translation
+ *
+ * @since 1.1.1
+ * @author Davide Cazzorla @davideC00
+ *
+ * @return void
+ */
+	function src_load_plugin_textdomain() {
+    load_plugin_textdomain( 'simple-revision-cleaner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+/**
+ * Internalization
+ * Called when the activated plugin has been loaded
+ */
+add_action( 'plugins_loaded', 'src_load_plugin_textdomain' );
