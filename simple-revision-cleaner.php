@@ -16,7 +16,7 @@
  * Plugin Name:       Simple Revision Cleaner
  * Plugin URI:        https://github.com/my-language-skills/simple-revision-cleaner
  * Description:       The plugin aim is to provide possibility for automatic deletion of old revisions on WordPress site or multisite.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            My Language Skills team
  * Author URI:        https://github.com/my-language-skills/
  * License:           GPL 3.0

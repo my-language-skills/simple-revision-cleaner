@@ -4,7 +4,7 @@ Donate link: https://opencollective.com/mylanguageskills
 Tags: revisions, cleaning, Optimize, delete, database, post
 Requires at least: 3.0.1
 Tested up to: 4.9.6
-Requires PHP: 5.4.0
+Requires PHP: 7.2.0
 Stable tag: 1.1.1
 License: GPL 3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -24,9 +24,14 @@ https://github.com/my-language-skills/simple-revision-cleaner
 
 == Frequently Asked Questions ==
 
-= How am I notified if some revisions were deleted from database? =
+= Is plugin work influenced if I set the limitation on amount of revesions on my web-site? =
 
-No, the plugin only checks the date of revision and if it was created earlier than set expiration date, it will be deleted anyway.
+No, the plugin only checks the date of revision and if it was created earlier than set expiration date,
+it will be deleted anyway.
+
+= What is the difference of Network Settings of this plugin and local settings of a site? =
+
+The main idea is quite same. The only difference is that with use of Network Settings you can spread the time limit of revision storing over all sites in network, restricting possibility to change it from site settings.
 
 == Screenshots ==
 
@@ -38,6 +43,8 @@ No, the plugin only checks the date of revision and if it was created earlier th
 = 1.1.1 =
 Additions:
 - Internalization
+Enhancements:
+- Fixed bug when all the revisions were deleted
 
 = 1.1.0 =
 Changed:

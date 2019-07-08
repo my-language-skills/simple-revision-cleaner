@@ -1,7 +1,7 @@
 # Simple Revision Cleaner
 
 * Contributors: danzhik, colomet, davideC00
-* Donate link:
+* Donate link: https://opencollective.com/mylanguageskills
 * Tags: revisions,cleaning
 * Requires at least: 3.0.1
 * Tested up to: 4.9.6
