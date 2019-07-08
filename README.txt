@@ -1,11 +1,11 @@
 === Simple Revision Cleaner ===
-Contributors: colomet, danzhik
+Contributors: colomet, danzhik, davideC00
 Donate link: https://opencollective.com/mylanguageskills
 Tags: revisions, cleaning, Optimize, delete, database, post
 Requires at least: 3.0.1
 Tested up to: 4.9.6
 Requires PHP: 5.4.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPL 3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -26,10 +26,6 @@ https://github.com/my-language-skills/simple-revision-cleaner
 
 = How am I notified if some revisions were deleted from database? =
 
-Once some revisions are deleted, you will get notification when admin dashboard will be loaded.
-
-= Is plugin work influenced if I set the limitation on amount of revisions on my web-site? =
-
 No, the plugin only checks the date of revision and if it was created earlier than set expiration date, it will be deleted anyway.
 
 == Screenshots ==
@@ -39,6 +35,9 @@ No, the plugin only checks the date of revision and if it was created earlier th
 3. Settings page in single site when option is locked by network administrator (General Settings page)
 
 == Changelog ==
+= 1.1.1 =
+Additions:
+- Internalization
 
 = 1.1.0 =
 Changed:
@@ -46,7 +45,7 @@ Changed:
 Enhancements:
 - Fixed bug when all the revisions were deleted
 
-= 1.0.1 = 
+= 1.0.1 =
 Changed:
 - Names of settings pages
 - Name in sidebar menu
@@ -60,7 +59,7 @@ Changed:
 == Upgrade Notice ==
 
 = 1.1.0 =
-Fixed bug, which leaded to deleting of all the revisions 
+Fixed bug, which leaded to deleting of all the revisions
 
 = 1.0.1 =
 Increased default interval of storing revisions to 365 days, default WordPress notifications are used now.

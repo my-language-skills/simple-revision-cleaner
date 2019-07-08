@@ -59,7 +59,6 @@ function src_flush_revisions (){
 		}
 
 	}
-
 }
 
 
@@ -83,7 +82,8 @@ function src_sett_section(){
 		$value = get_option('src_time_limit');
 		$html = '<input type="number" id="src_time_limit" name="src_time_limit" '.$disabled.' value="'.esc_html($value).'">';
 		$html .= '<p><i>' . __('Interval in days since today to store revisions.', 'simple-revision-cleaner');
-		$html .= $disabled == 'readonly' ? __(' Set by network administrator. In order to change value, please, contact him.', 'simple-revision-cleaner') . '</i></p>' : '</i></p>';
+		$html .= $disabled == 'readonly' ? __(' Set by network administrator. In order to change value, please, contact him.', 'simple-revision-cleaner')  : '';
+		$html .= '</i></p>';
 		echo $html;
 	};
 	add_settings_field('src_time_limit', __('Time interval', 'simple-revision-cleaner'), $create_field, 'general', 'src_settings');
@@ -152,34 +152,36 @@ function src_net_sett_section(){
 
 /**
  * Function responsible for option overwriting over all sites
+ *
+ * @since 0.1
+ * @since 1.1.1 Fixed a overwriting bug for Main Blog
+ * @author Daniil Zhitnitskii @danzhik, davideC00
  */
 function src_update_flush_options (){
 
 	global $wpdb;
 
-	check_admin_referer('src_net_settings-options');
+	if(check_admin_referer('src_net_settings-options')){ //is Network setting page
+		update_option( 'src_net_time_limit', sanitize_text_field( $_POST['src_net_time_limit'] ) );
+		update_option('src_freeze_limit', sanitize_key($_POST['src_freeze_limit']));
+	}
 
 	//Grabbing all the site IDs
-	$siteids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+	$blogids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
 
 	//Going through the sites
-	foreach ($siteids as $site_id) {
+	foreach ($blogids as $blog_id) {
 
 		//Switching site
-		switch_to_blog($site_id);
-		if ($site_id == 1){
-			update_option( 'src_net_time_limit', sanitize_text_field($_POST['src_net_time_limit']) );
-			update_option('src_freeze_limit', sanitize_key($_POST['src_freeze_limit']));
-			continue;
-		}
+		switch_to_blog($blog_id);
 		if (isset($_POST['src_freeze_limit'])) {
-			update_option( 'src_time_limit', sanitize_text_field($_POST['src_net_time_limit']) );
+			update_option( 'src_time_limit',   sanitize_text_field($_POST['src_net_time_limit']));
 			src_flush_revisions();
 		}
 	}
 
 	// At the end we redirect back to our options page.
-	wp_redirect(add_query_arg(array('page' => 'src_net_settings',
+	 wp_redirect(add_query_arg(array('page' => 'src_net_settings',
 	                                'updated' => 'true'), network_admin_url('settings.php')));
 
 	exit;
@@ -227,13 +229,14 @@ if (is_multisite()){
  * It loads the MO file for plugin's translation
  *
  * @since 1.1.1
- * @author Davide Cazzorla @davideC00
+ * @author @davideC00
  *
  * @return void
  */
 	function src_load_plugin_textdomain() {
     load_plugin_textdomain( 'simple-revision-cleaner', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
+
 /**
  * Internalization
  * Called when the activated plugin has been loaded
