@@ -1,7 +1,7 @@
 === Simple Revision Cleaner ===
 Contributors: colomet, danzhik, davideC00
 Donate link: https://opencollective.com/mylanguageskills
-Tags: revisions, cleaning, Optimize, delete, database, post
+Tags: revisions, cleaning, Optimize, delete, database, post, multisite
 Requires at least: 3.0.1
 Tested up to: 4.9.6
 Requires PHP: 5.6
