@@ -1,15 +1,17 @@
 === Simple Revision Cleaner ===
 Contributors: colomet, danzhik, davideC00
 Donate link: https://opencollective.com/mylanguageskills
-Tags: revisions, cleaning, Optimize, delete, database, post, multisite
-Requires at least: 3.0.1
-Tested up to: 4.9.6
+Tags: multisite, revisions, cleaning, optimize, delete, database, wordpress plugin
+Requires at least: 4.6
+Tested up to: 5.2.2
 Requires PHP: 5.6
 Stable tag: 1.1.1
 License: GPL 3.0
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 This plugin provides simple handy tool for automatic cleaning database from old, non-relevant revisions on your web-site.
+
+Only works with multisite installation!
 
 == Description ==
 
