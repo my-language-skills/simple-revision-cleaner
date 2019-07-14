@@ -1,9 +1,22 @@
 <?php
+
 /**
- * Fired when plugin is uninstalled
+ * Summary (no period for file headers)
+ *
+ * Description. (use period)
+ *
+ * @link URL
+ *
+ * @package simple-metadata-lifecycle
+ * @subpackage XXXXXX/XXXXXX
+ * @since x.x.x (when the file was introduced)
+ */
+ 
+/**
+ * Fired when plugin is uninstalled.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii
+ *
  */
 
 // If uninstall not called from WordPress, then exit.

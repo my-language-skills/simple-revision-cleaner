@@ -33,10 +33,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 /**
- * Main function that takes care of flushing database from old revisions
+ * Main function that takes care of flushing database from old revisions.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii @danzhik
+ *
  */
 
 function src_flush_revisions (){
@@ -61,12 +61,11 @@ function src_flush_revisions (){
 	}
 }
 
-
 /**
- * Function to create settings section on General Settings page
+ * Function to create settings section on General Settings page.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii @danzhik
+ *
  */
 function src_sett_section(){
 
@@ -90,10 +89,10 @@ function src_sett_section(){
 }
 
 /**
- * Function for displaying content of network settings page
+ * Function for displaying content of network settings page.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii
+ *
  */
 function src_render_net_set(){
 	?>
@@ -110,10 +109,10 @@ function src_render_net_set(){
 }
 
 /**
- * Function to create network settings page for plugin
+ * Function to create network settings page for plugin.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii @danzhik
+ *
  */
 function src_net_sett_section(){
 
@@ -151,11 +150,11 @@ function src_net_sett_section(){
 }
 
 /**
- * Function responsible for option overwriting over all sites
+ * Function responsible for option overwriting over all sites.
  *
  * @since 0.1
  * @since 1.1.1 Fixed a overwriting bug for Main Blog
- * @author Daniil Zhitnitskii @danzhik, davideC00
+ *
  */
 function src_update_flush_options (){
 
@@ -188,10 +187,10 @@ function src_update_flush_options (){
 }
 
 /**
- * Function called during activation process
+ * Function called during activation process.
  *
  * @since 0.1
- * @author Daniil Zhitnitskii @danzhik
+ *
  */
 function src_activator() {
 
@@ -225,11 +224,10 @@ if (is_multisite()){
 }
 
 /**
- * Internalization
- * It loads the MO file for plugin's translation
+ * Internalization.
+ * It loads the MO file for plugin's translation.
  *
  * @since 1.1.1
- * @author @davideC00
  *
  * @return void
  */
@@ -239,6 +237,6 @@ if (is_multisite()){
 
 /**
  * Internalization
- * Called when the activated plugin has been loaded
+ * Called when the activated plugin has been loaded.
  */
 add_action( 'plugins_loaded', 'src_load_plugin_textdomain' );
