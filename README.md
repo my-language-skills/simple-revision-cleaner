@@ -9,6 +9,7 @@
 * Stable tag: 1.1.1
 * License: GPL 3.0
 * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+* Gutemberg: compatible
 
 This plugin provides simple handy tool for automatic cleaning database from old, non-relevant revesions on your web-site.
 
