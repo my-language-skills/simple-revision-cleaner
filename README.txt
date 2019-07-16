@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin provides simple handy tool for automatic cleaning database from old, non-relevant revisions on your web-site.
 
-Only works with multisite installation!
+**Only works with multisite installation!**
 
 == Description ==
 
