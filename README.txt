@@ -3,7 +3,7 @@ Contributors: colomet, danzhik, davideC00
 Donate link: https://opencollective.com/mylanguageskills
 Tags: multisite, revisions, cleaning, optimize, delete, database, wordpress plugin
 Requires at least: 3.0.1
-Tested up to: 5.2.2
+Tested up to: 5.3
 Requires PHP: 5.6
 Stable tag: 1.1.1
 License: GPLv3 or later
@@ -11,13 +11,11 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin provides simple handy tool for automatic cleaning database from old, non-relevant revisions on your web-site.
 
-**Only works with multisite installation!**
-
 == Description ==
 
 With use of this plugin you will not longer need to care about clean state of your database because of plenty of revisions. Once the plugin is activated, every time you visit admin dashboard of a site it will automatically detect revisions, which are older then you need, and flush them from database.
 
-https://github.com/my-language-skills/simple-revision-cleaner
+**Only works with multisite installation!**
 
 == Installation ==
 
@@ -38,12 +36,13 @@ This section describes how to install the plugin and get it working.
 
 = I have a feature request, I've found a bug, a plugin is incompatible... =
 
-Please visit [the support forums](https://wordpress.org/support/plugin/xxxxxxxx)
+Please visit [the support forums](https://wordpress.org/support/plugin/simple-revision-cleaner/)
 
 = I am a developer; how can I help? =
 
 Any input is much appreciated, and everything will be considered.
-Please visit the [GitHub project page](https://github.com/sybrew/the-seo-framework) to submit issues or even pull requests.
+Please visit the [GitHub project page](https://github.com/my-language-skills/simple-revision-cleaner
+) to submit issues or even pull requests.
 
 = Is plugin work influenced if I set the limitation on amount of revesions on my web-site? =
 
