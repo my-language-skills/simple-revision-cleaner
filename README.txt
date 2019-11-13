@@ -1,5 +1,5 @@
 === Simple Revision Cleaner ===
-Contributors: colomet, danzhik, davideC00
+Contributors: colomet, danzhik, dcazzorla
 Donate link: https://opencollective.com/mylanguageskills
 Tags: multisite, revisions, cleaning, optimize, delete, database, wordpress plugin
 Requires at least: 3.0.1
