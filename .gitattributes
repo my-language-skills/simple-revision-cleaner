@@ -4,5 +4,8 @@
 /.github export-ignore
 /wp-assets export-ignore
 /doc export-ignore
+/Doxyfile export-ignore
 /LICENSE.md export-ignore
 /README.md export-ignore
+/CHANGELOG.md export-ignore
+/PLUGN-STRUCTURE.md export-ignore
