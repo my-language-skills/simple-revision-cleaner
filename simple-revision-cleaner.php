@@ -52,7 +52,16 @@ function src_flush_revisions (){
 	if (isset($timeLimit)) {
 		$start = time();
 		// We keep only 1 week worth of post revisions.
-		$revision_ids = $wpdb->get_col($wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE (`post_type` = 'revision') AND `post_date_gmt` < DATE_SUB(NOW(), INTERVAL '$timeLimit' DAY) LIMIT %d", $limit ));
+		//Query to get all revisions_ids where the timeLimit is excited
+		//e.g. timeLimit is set to 365
+		//When Subtructing the timelimit in days from Today's date, the result must be a date after the date of creation.
+		//=> then deleting than revision
+		$revision_ids = $wpdb->get_col(
+			$wpdb->prepare( 
+				"SELECT `ID` 
+				FROM $wpdb->posts 
+				WHERE (`post_type` = 'revision') 
+					AND `post_date_gmt` < DATE_SUB(NOW(), INTERVAL '$timeLimit' DAY) LIMIT %d", $limit ));
 		$revision_ids_amount = 0;
 		foreach ( $revision_ids as $revision_id ) {
 			wp_delete_post_revision( $revision_id );
@@ -99,8 +108,11 @@ function src_render_net_set(){
 	<div class="wrap">
 		<form method="POST" action="edit.php?action=update_network_options_flush">
 			<?php
+			//Output nonce, action, and option_page fields for a settings page.
 			settings_fields('src_net_settings');
+			//Prints out all settings sections added to a particular settings page
 			do_settings_sections('src_net_settings');
+			//Echos simple submit button
 			submit_button();
 			?>
 		</form>
@@ -116,6 +128,9 @@ function src_render_net_set(){
  */
 function src_net_sett_section(){
 
+	//Creates submenu page with Page Title: Revisions Cleaner
+	//settings name: Revissions Cleaner
+	// and slug settings name src_net_settings
 	add_submenu_page('settings.php', __('Revisions Cleaner', 'simple-revision-cleaner'),
 								__('Revisions Cleaner', 'simple-revision-cleaner'),
 								'manage_network_options', 'src_net_settings' ,'src_render_net_set');
@@ -125,7 +140,7 @@ function src_net_sett_section(){
 	 											'', 'src_net_settings');
 
 	//registering setting for freezing value over all sites in multisite
-	register_setting('src_net_settings', 'src_freeze_limit');
+	register_setting('src_net_settings', 'src_freeze_limit');//change to src_time_limit??
 	//registering setting for interval value
 	register_setting('src_net_settings', 'src_net_time_limit');
 
@@ -147,6 +162,7 @@ function src_net_sett_section(){
 
 	add_settings_field('src_net_time_limit', __('Time interval', 'simple-revision-cleaner') , $create_field, 'src_net_settings', 'src_net_settings');
 	add_settings_field('src_freeze_limit', __('Set for all sites', 'simple-revision-cleaner'), $create_freeze_field, 'src_net_settings', 'src_net_settings');
+
 }
 
 /**
@@ -157,7 +173,6 @@ function src_net_sett_section(){
  *
  */
 function src_update_flush_options (){
-
 	global $wpdb;
 
 	if(check_admin_referer('src_net_settings-options')){ //is Network setting page
@@ -177,6 +192,9 @@ function src_update_flush_options (){
 			update_option( 'src_time_limit',   sanitize_text_field($_POST['src_net_time_limit']));
 			src_flush_revisions();
 		}
+		//New code:
+		//restores current blog, needed after switch_to_blog() call
+		restore_current_blog();
 	}
 
 	// At the end we redirect back to our options page.
@@ -200,26 +218,37 @@ function src_activator() {
 	$siteids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 
 	//Going through the sites
+	//setting option for 
 	foreach ( $siteids as $site_id ) {
 		switch_to_blog($site_id);
 		if ($site_id == 1){
+			//option for the Network wide default limit
 			update_option( 'src_net_time_limit', '365' );
 			continue;
 		}
+		//option for each site default limit
 		update_option( 'src_time_limit', '365' );
+		//New code:
+		restore_current_blog();
 	}
 }
 
 //executing flush on admin area visiting
+//Runs at the beginning of every admin page before the page is rendered. 
+//takes care of the check for deleting revisions..
 add_action('admin_init', 'src_flush_revisions');
 //adding settings section on main settings page
+//Runs after the basic admin panel menu structure is in place.
 add_action('admin_menu', 'src_sett_section');
 //activation process
 register_activation_hook(__FILE__, 'src_activator');
 
 //add network page if is multisite installation and handle option updates
 if (is_multisite()){
+	//called when the basic menu structure is prepared for the Network Admin page
 	add_action('network_admin_menu', 'src_net_sett_section');
+	//action is not used??
+	//action never fired?
 	add_action('network_admin_edit_update_network_options_flush', 'src_update_flush_options');
 }
 
